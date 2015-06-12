@@ -24,6 +24,13 @@ Ruby 2.2.2
 
 ## Notes
 
+`answer = eval("#{klass}('#{gets.chomp}')")` (line 11) uses Ruby's strict built-in conversions, e.g.
+
+```ruby
+Integer("01234")  # => ArgumentError: invalid value for Integer(): "01999"
+Integer("1234")   # => 1234
+```
+
 ## Usage
 
 run `bundle install`
@@ -80,6 +87,7 @@ you did continue.
 
 ## Review
 
+Added a Float example to see if the type conversions work.
 
 ## License
 
