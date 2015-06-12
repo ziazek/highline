@@ -3,7 +3,7 @@
 # require 'pry-byebug'
 
 module Highline 
-  def ask(question, klass, within: nil, validate: nil)
+  def ask(question, klass = String, within: nil, validate: nil)
     answer = :not_set
     while answer == :not_set do
       puts question
@@ -64,6 +64,13 @@ class HighlineImplementer
     return "#float Answer: #{answer}"
   end
 
+  # Ruby built-in conversions don't cover DateTime or Time. 
+  
+  # def datetime
+  #   answer = ask("Enter a date and time.", Time)
+  #   return "#datetime Answer: #{answer}"
+  # end
+
   def continuation
     if ask_if("Would you like to continue?")
       return "you did continue."
@@ -77,4 +84,5 @@ hl = HighlineImplementer.new
 puts hl.age
 puts hl.num
 puts hl.float
+# puts hl.datetime
 puts hl.continuation

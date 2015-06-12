@@ -46,7 +46,7 @@ Methods can be called directly with `Highline.ask(question, klass, within:)`.
 
 **#ask(question, klass, within: nil, validate: nil)**
 
-`klass` should be a class such as Integer, String, Float, Array, etc.
+`klass` should be one of Integer, String, Float, Array, Hash, Complex, Rational.
 `within:` should be a Range and validate should be a regular expression. 
 
 **#ask_if(question)**
@@ -89,6 +89,8 @@ you did continue.
 ## Review
 
 Added a Float example to see if the type conversions work.
+
+Ruby built-in conversions don't cover DateTime or Time. Possible future exercise to add in parsing of Dates and Times.
 
 ## License
 
