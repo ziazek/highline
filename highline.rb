@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
+# require 'pry-byebug'
+
 module Highline 
   def ask(question, klass, within: nil, validate: nil)
     answer = :not_set
@@ -43,21 +45,27 @@ module Highline
 end
 
 class HighlineImplementer
-  # include Highline
+  include Highline
 
   def age
-    answer = Highline.ask("What is your age?", Integer, within: 0..105)
+    answer = ask("What is your age?", Integer, within: 0..105)
     return "#age Answer: #{answer}"
   end
 
   def num
     # binary format: 0b1110_0000_0000_0000
-    answer = eval "0b#{ Highline.ask('Enter a  binary number.', String, validate: /^[01_]+$/ ) }"
+    answer = eval "0b#{ ask('Enter a  binary number.', String, validate: /^[01_]+$/ ) }"
+    # eval turns it into an integer.
     return "#num Answer: #{answer}"
   end
 
+  def float
+    answer = ask("Enter a float between 0 and 15 inclusive.", Float, within: 0..15)
+    return "#float Answer: #{answer}"
+  end
+
   def continuation
-    if Highline.ask_if("Would you like to continue?")
+    if ask_if("Would you like to continue?")
       return "you did continue."
     else
       return "you did not continue."
@@ -68,4 +76,5 @@ end
 hl = HighlineImplementer.new
 puts hl.age
 puts hl.num
+puts hl.float
 puts hl.continuation
