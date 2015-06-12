@@ -46,6 +46,7 @@ Methods can be called directly with `Highline.ask(question, klass, within:)`.
 
 **#ask(question, klass, within: nil, validate: nil)**
 
+`klass` should be a class such as Integer, String, Float, Array, etc.
 `within:` should be a Range and validate should be a regular expression. 
 
 **#ask_if(question)**
